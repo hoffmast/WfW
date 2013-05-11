@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Water for the World</string>
+    <string name="app_name">Water For World</string>
+    <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
+    <string name="haveWF">Do you already have a water filter?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="filterType">What type of filter do you have?</string>
+    <string name="solarFilter">Solar</string>
+    <string name="bioFilter">Bio</string>
+    <string name="ceramicFilter">Ceramic</string>
+    <string name="obtainWaterBottle">Can you obtain affordable plastic water bottle?</string>
+    <string name="filterWorking">Is filter working?</string>
+    <string name="waterLooks">What does your drinking water looks like?</string>
+    <string name="gt200nm">&gt; 200 nm</string>
+    <string name="lt200nm">&lt; 200 nm</string>
+    <string name="menu_settings">My Menu Settings</string>
 
 </resources>

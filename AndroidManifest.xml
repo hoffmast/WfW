@@ -22,7 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="PlasticBottleActivity"></activity>
+        <activity android:name="FilterTypeActivity"></activity>
+        <activity android:name="FilterWorkingActivity"></activity>
+        <activity android:name="ObtainWaterBottleActivity"></activity>
+        <activity android:name="WaterLooksActivity"></activity>
     </application>
 
 </manifest>
