@@ -26,7 +26,7 @@ public class LocaleManager {
     private ResourceBundle textBundle;
     
     /** A list of the different supported languages */
-    public final static String[][] langs = {{"Set Language","English", "Español"}, {"en", "en", "es"}};
+    public final static String[][] langs = {{"Set Language", "Afrikaans", "English", "Español"}, {"en", "af", "en", "es"}};
     
     /************************************************************
      * Private Constructor for Singleton Design Pattern
