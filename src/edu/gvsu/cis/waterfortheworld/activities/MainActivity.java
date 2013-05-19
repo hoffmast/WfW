@@ -1,8 +1,6 @@
 package edu.gvsu.cis.waterfortheworld.activities;
 
 import java.util.Locale;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
 import android.app.Activity;
@@ -12,13 +10,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import edu.gvsu.cis.waterfortheworld.R;
 import edu.gvsu.cis.waterfortheworld.tools.LocaleManager;
 
-public class MainActivity extends Activity implements Observer {
+public class MainActivity extends Activity{
     final Context context = this;
     
     /** The LocaleManager to use */
@@ -43,8 +43,7 @@ public class MainActivity extends Activity implements Observer {
         
         Locale lcl = Locale.getDefault();
         lm = LocaleManager.getSingleton();
-        lm.setCurrentLocale(lcl);
-        lm.addObserver(this);
+        lm.setFirstLocale(lcl);
         
         langSpinner = (Spinner) findViewById(R.id.haveWFSpinner);
         questionText = (TextView) findViewById(R.id.haveWF);
@@ -52,19 +51,24 @@ public class MainActivity extends Activity implements Observer {
         noRadButton = (RadioButton) findViewById(R.id.haveWFNo);
         
         lm.setUpLangSpinner(langSpinner, this);
+        langSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                    int pos, long id) {
+                if (pos != 0) {
+                    lm.setCurrentLocale(new Locale(LocaleManager.langs[1][pos]));
+                    setTextToCurrentLocale();
+                }
+            }
+            
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {}
+        });
         
         setTextToCurrentLocale();
     }
     
-    /* (non-Javadoc)
-     * @see android.app.Activity#onDestroy()
-     */
-    @Override
-    protected void onDestroy() {
-        lm.deleteObserver(this);
-        super.onDestroy();
-    }
-
     private void setTextToCurrentLocale() {
         ResourceBundle bundle = lm.getTextBundle();
         questionText.setText(bundle.getString("haveWF"));
@@ -80,17 +84,23 @@ public class MainActivity extends Activity implements Observer {
     }
     
     public void yHaveWF(View view){
-        startActivity(new Intent(context, FilterTypeActivity.class));
+        Intent intent = new Intent(context, FilterTypeActivity.class);
+        intent.putExtra("lang", lm.getCurrentLocale().getLanguage());
+        startActivityForResult(intent, 0);
     }
     
     public void nHaveWF(View view){
-        startActivity(new Intent(context, ObtainWaterBottleActivity.class));
+        Intent intent = new Intent(context, ObtainWaterBottleActivity.class);
+        intent.putExtra("lang", lm.getCurrentLocale().getLanguage());
+        startActivityForResult(intent, 0);
     }
     
+    /* (non-Javadoc)
+     * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+     */
     @Override
-    public void update(Observable arg0, Object arg1) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         setTextToCurrentLocale();
-        langSpinner.setSelection((Integer) arg1);
-    }
-    
+    }    
 }

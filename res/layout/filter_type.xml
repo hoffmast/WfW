@@ -2,44 +2,49 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <TextView
-        android:id="@+id/haveWF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/filterType"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <RadioGroup
-        android:id="@+id/haveWFRadioGroup"
+        android:id="@+id/filterTRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/haveWF" >
+        android:layout_below="@+id/filterT" >
 
         <RadioButton
-            android:id="@+id/haveWFYes"
+            android:id="@+id/filterTSolar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/solarFilter" 
             android:onClick="solarFilter"/>
 
         <RadioButton
-            android:id="@+id/haveWFNo"
+            android:id="@+id/filterTBio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bioFilter" 
             android:onClick="bioFilter"/>
         
         <RadioButton
-            android:id="@+id/radio2"
+            android:id="@+id/filterTCeram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ceramicFilter" 
              android:onClick="ceramicFilter"/>
     </RadioGroup>
+
+    <Spinner
+        android:id="@+id/filterTSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/filterT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/filterTSpinner"
+        android:text="@string/filterType"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

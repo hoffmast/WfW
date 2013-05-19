@@ -3,7 +3,7 @@
     android:layout_height="fill_parent" >
 
     <TextView
-        android:id="@+id/haveWF"
+        android:id="@+id/filterT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -17,8 +17,8 @@
         android:id="@+id/haveWFRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/haveWF"
-        android:layout_below="@+id/haveWF" >
+        android:layout_alignLeft="@+id/filterT"
+        android:layout_below="@+id/filterT" >
 
         <RadioButton
             android:id="@+id/haveWFYes"

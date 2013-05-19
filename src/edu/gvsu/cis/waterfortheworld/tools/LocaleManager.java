@@ -1,16 +1,11 @@
 package edu.gvsu.cis.waterfortheworld.tools;
 
 import java.util.Locale;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 import android.content.Context;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 /*************************************************************
  * Manages Locale specific items, including the language
@@ -19,13 +14,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * @author Steven M.W. Hoffman
  * @version May 17, 2013
  ************************************************************/
-public class LocaleManager extends Observable {
+public class LocaleManager {
     
     /** The singleton object */
     private static LocaleManager singleton;
-    
-    /** The Listener for Language Spinners to use */
-    private final OnItemSelectedListener listener;
     
     /** The current selected Locale */
     private Locale currentLocale;
@@ -34,7 +26,7 @@ public class LocaleManager extends Observable {
     private ResourceBundle textBundle;
     
     /** A list of the different supported languages */
-    private String[][] langs = {{"English", "Español"}, {"en", "es"}};
+    public final static String[][] langs = {{"Language","English", "Español"}, {"en", "en", "es"}};
     
     /************************************************************
      * Private Constructor for Singleton Design Pattern
@@ -42,19 +34,6 @@ public class LocaleManager extends Observable {
     private LocaleManager() {
         currentLocale = null;
         textBundle = null;
-        listener = new OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                    int pos, long id) {
-                setCurrentLocale(new Locale(langs[1][pos]));
-                setChanged();
-                notifyObservers(pos);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {}
-        };
     }
     
     /***
@@ -81,6 +60,19 @@ public class LocaleManager extends Observable {
     }
     
     /**
+     * Sets the current locale to the passed locale only if current
+     * locale was null when method was called.
+     * 
+     * @param locale The locale to make current.
+     */
+    public void setFirstLocale(Locale locale) {
+        if (currentLocale ==  null) {
+            currentLocale = locale;
+            textBundle = ResourceBundle.getBundle("TextBundle", currentLocale);
+        }
+    }
+    
+    /**
      * Sets the current locale to the passed locale.
      * @param locale The locale to make current.
      */
@@ -98,10 +90,7 @@ public class LocaleManager extends Observable {
     }
     
     /**
-     * Sets up the language selection spinner.  Adds a listener to the
-     * spinner.  The listener calls the notifyObservers() method when a 
-     * spinner item is selected, sending the position of the selected item 
-     * in the spinner to the update() method.
+     * Sets up the language selection spinner.
      * 
      * @param spinner The language selection spinner to setup.
      * @param context The Context of the Activity which the spinner is in.
@@ -112,6 +101,5 @@ public class LocaleManager extends Observable {
                         android.R.layout.simple_spinner_item, langs[0]);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(listener);
     }
 }

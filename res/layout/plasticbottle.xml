@@ -5,7 +5,7 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/haveWF"
+        android:id="@+id/filterT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/haveWF"
+        android:layout_alignRight="@+id/filterT"
         android:layout_marginRight="38dp"
         android:text="No" />
 
@@ -26,8 +26,8 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/haveWF"
-        android:layout_below="@+id/haveWF"
+        android:layout_alignLeft="@+id/filterT"
+        android:layout_below="@+id/filterT"
         android:layout_marginLeft="43dp"
         android:layout_marginTop="60dp"
         android:text="Yes" />
