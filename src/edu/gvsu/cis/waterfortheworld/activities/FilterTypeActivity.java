@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,29 +78,22 @@ public class FilterTypeActivity extends Activity {
         ceramRadButton.setText(bundle.getString("ceramicFilter"));
     }
     
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
     public void solarFilter(View view){
         Intent intent =  new Intent(context,FilterWorkingActivity.class);
         intent.putExtra("fType", "solar");
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
     
     public void bioFilter(View view){
         Intent intent =  new Intent(context,FilterWorkingActivity.class);
         intent.putExtra("fType", "bio");
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
     
     public void ceramicFilter(View view){
         Intent intent =  new Intent(context,FilterWorkingActivity.class);
         intent.putExtra("fType", "ceramic");
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
     
     /* (non-Javadoc)
@@ -111,5 +103,12 @@ public class FilterTypeActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         setTextToCurrentLocale();
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 }

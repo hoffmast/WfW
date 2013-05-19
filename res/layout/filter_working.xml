@@ -2,33 +2,41 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+    <Spinner
+        android:id="@+id/filterWSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="49dp" />
+
     <TextView
-        android:id="@+id/filterT"
+        android:id="@+id/filterW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/filterWSpinner"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="19dp"
         android:text="@string/filterWorking"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RadioGroup
-        android:id="@+id/haveWFRadioGroup"
+        android:id="@+id/filterWRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/filterT"
-        android:layout_below="@+id/filterT" >
+        android:layout_alignLeft="@+id/filterW"
+        android:layout_below="@+id/filterW" >
 
         <RadioButton
-            android:id="@+id/haveWFYes"
+            android:id="@+id/filterWYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yes" 
             android:onClick="yFilterWorking"/>
 
         <RadioButton
-            android:id="@+id/haveWFNo"
+            android:id="@+id/filterWNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no" 
