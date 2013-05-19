@@ -1,5 +1,6 @@
-package edu.gvsu.cis.waterfortheworld;
+package edu.gvsu.cis.waterfortheworld.activities;
 
+import edu.gvsu.cis.waterfortheworld.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

@@ -1,18 +1,19 @@
-package edu.gvsu.cis.waterfortheworld;
+package edu.gvsu.cis.waterfortheworld.activities;
+
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import edu.gvsu.cis.waterfortheworld.R;
 
-public class ObtainWaterBottleActivity extends Activity {
+public class WaterLooksActivity extends Activity {
 	final Context context = this;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.obtain_water_bottle);
+		setContentView(R.layout.water_looks);
 	}
 
 	@Override
@@ -22,11 +23,13 @@ public class ObtainWaterBottleActivity extends Activity {
 		return true;
 	}
 	
-	public void yObtainWaterBottle(View view){
-		startActivity(new Intent(context,WaterLooksActivity.class));
+	public void gt200nm(View view){
+		//startActivity(new Intent(context,Main.class));
+		//use salted water sanitation video
 	}
 	
-	public void nObtainWaterBottle(View view){
-		//Display ceramic filteration video
+	public void lt200nm(View view){
+		//startActivity(new Intent(context,Main.class));
+		//use standard solar water sanitation video
 	}
 }
